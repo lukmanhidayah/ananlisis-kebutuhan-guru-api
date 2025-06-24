@@ -34,7 +34,7 @@ class UserApiController extends Controller
             'data' => $array['data'] ?? [],
         ];
 
-        return $this->response($customPagination, 'OK');
+        return $this->response($customPagination, 'Retrieved successfully');
     }
 
     public function profile(Request $request)
@@ -44,7 +44,7 @@ class UserApiController extends Controller
         $data['role'] = $user->role->name ?? null;
         $data = $this->camelKeys($data);
 
-        return $this->response($data, 'OK');
+        return $this->response($data, 'Retrieved successfully');
     }
 
     public function show(int $id)
@@ -52,7 +52,7 @@ class UserApiController extends Controller
         $user = User::with('role')->findOrFail($id);
         $data = $this->camelKeys($user->toArray());
 
-        return $this->response($data, 'OK');
+        return $this->response($data, 'Retrieved successfully');
     }
 
     private function camelKeys(array $data): array

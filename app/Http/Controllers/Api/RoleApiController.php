@@ -23,7 +23,7 @@ class RoleApiController extends Controller
             'total' => $roles->total(),
             'data' => $array['data'] ?? [],
         ];
-        return $this->response($customPagination, 'OK');
+        return $this->response($customPagination, 'Retrieved successfully');
     }
 
     public function show(int $id)
@@ -31,7 +31,7 @@ class RoleApiController extends Controller
         $role = Role::with('menus')->findOrFail($id);
         $array = $this->camelKeys($role->toArray());
 
-        return $this->response($array, 'OK');
+        return $this->response($array, 'Retrieved successfully');
     }
 
     private function camelKeys(array $data): array

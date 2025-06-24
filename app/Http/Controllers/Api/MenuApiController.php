@@ -25,7 +25,7 @@ class MenuApiController extends Controller
             'data' => $array['data'] ?? [],
         ];
 
-        return $this->response($customPagination, 'OK');
+        return $this->response($customPagination, 'Retrieved successfully');
     }
 
     public function show(int $id)
@@ -33,7 +33,7 @@ class MenuApiController extends Controller
         $menu = Menu::findOrFail($id);
         $array = $this->camelKeys($menu->toArray());
 
-        return $this->response($array, 'OK');
+        return $this->response($array, 'Retrieved successfully');
     }
 
     public function store(Request $request)
