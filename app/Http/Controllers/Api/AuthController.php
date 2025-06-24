@@ -47,7 +47,6 @@ class AuthController extends Controller
 
         return $this->response([
             'token' => $token,
-            'role'  => optional($user->role)->name,
         ], 'Login successful');
     }
 
