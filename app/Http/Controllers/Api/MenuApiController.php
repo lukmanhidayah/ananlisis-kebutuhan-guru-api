@@ -24,7 +24,7 @@ class MenuApiController extends Controller
             'data' => $array['data'] ?? [],
         ];
 
-        return $this->response($customPagination, 'Retrieved successfully');
+        return $this->response($customPagination, 'Data berhasil diambil');
     }
 
     public function show(int $id)
@@ -32,7 +32,7 @@ class MenuApiController extends Controller
         $menu = Menu::findOrFail($id);
         $array = $this->camelKeys($menu->toArray());
 
-        return $this->response($array, 'Retrieved successfully');
+        return $this->response($array, 'Data berhasil diambil');
     }
 
     public function store(Request $request)
@@ -57,7 +57,7 @@ class MenuApiController extends Controller
         $menu->load('roles');
         $array = $this->camelKeys($menu->toArray());
 
-        return $this->response($array, 'Created', 201);
+        return $this->response($array, 'Data berhasil disimpan', 201);
     }
 
 }

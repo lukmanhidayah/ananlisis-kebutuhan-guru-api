@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RoleApiController extends Controller
 {
@@ -22,7 +23,7 @@ class RoleApiController extends Controller
             'total' => $roles->total(),
             'data' => $array['data'] ?? [],
         ];
-        return $this->response($customPagination, 'Retrieved successfully');
+        return $this->response($customPagination, 'Data berhasil diambil');
     }
 
     public function show(int $id)
@@ -30,7 +31,7 @@ class RoleApiController extends Controller
         $role = Role::with('menus')->findOrFail($id);
         $array = $this->camelKeys($role->toArray());
 
-        return $this->response($array, 'Retrieved successfully');
+        return $this->response($array, 'Data berhasil diambil', 200);
     }
 
     public function store(Request $request)
@@ -43,7 +44,6 @@ class RoleApiController extends Controller
 
         $array = $this->camelKeys($role->toArray());
 
-        return $this->response($array, 'Created', 201);
+        return $this->response($array, 'Data berhasil disimpan', 201);
     }
-
 }

@@ -53,7 +53,7 @@ class MadrasahApiController extends Controller
 
         $array = $this->camelKeys($madrasah->toArray());
 
-        return $this->response($array, 'Created', 201);
+        return $this->response($array, 'Data berhasil disimpan', 201);
     }
 
     public function update(Request $request, int $id)
@@ -76,7 +76,7 @@ class MadrasahApiController extends Controller
 
         $array = $this->camelKeys($madrasah->toArray());
 
-        return $this->response($array, 'Updated');
+        return $this->response($array, 'Data berhasil diperbarui');
     }
 
     public function destroy(int $id)
@@ -84,7 +84,7 @@ class MadrasahApiController extends Controller
         $madrasah = Madrasah::findOrFail($id);
         $madrasah->delete();
 
-        return $this->response(null, 'Deleted');
+        return $this->response(null, 'Data berhasil dihapus');
     }
 
 }

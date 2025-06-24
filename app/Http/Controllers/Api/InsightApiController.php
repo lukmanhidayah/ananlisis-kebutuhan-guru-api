@@ -15,7 +15,7 @@ class InsightApiController extends Controller
             ['title' => 'Jumlah Kekurangan', 'value' => '0'],
         ];
 
-        return $this->response($this->camelKeys($data), 'Success');
+        return $this->response($this->camelKeys($data), 'Data berhasil diambil');
     }
 
 }

@@ -33,7 +33,7 @@ class UserApiController extends Controller
             'data' => $array['data'] ?? [],
         ];
 
-        return $this->response($customPagination, 'Retrieved successfully');
+        return $this->response($customPagination, 'Data berhasil diambil');
     }
 
     public function profile(Request $request)
