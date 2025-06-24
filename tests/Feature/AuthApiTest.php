@@ -17,7 +17,7 @@ class AuthApiTest extends TestCase
             'password' => bcrypt('secret'),
         ]);
 
-        $response = $this->postJson('/api/login', [
+        $response = $this->postJson('/api/v1/login', [
             'email' => 'user@example.com',
             'password' => 'secret',
         ]);
@@ -32,7 +32,7 @@ class AuthApiTest extends TestCase
 
         $logout = $this->withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->postJson('/api/logout');
+        ])->postJson('/api/v1/logout');
 
         $logout->assertStatus(200)
             ->assertJsonPath('meta.message', 'Logged out');
