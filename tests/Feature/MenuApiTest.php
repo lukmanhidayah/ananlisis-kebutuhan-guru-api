@@ -38,5 +38,7 @@ class MenuApiTest extends TestCase
                     'data',
                 ],
             ]);
+
+        $this->assertArrayHasKey('iconType', $response->json('result.data.0'));
     }
 }

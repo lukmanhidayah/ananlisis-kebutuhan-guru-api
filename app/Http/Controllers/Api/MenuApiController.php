@@ -41,12 +41,14 @@ class MenuApiController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string'],
             'url' => ['required', 'string'],
+            'icon_type' => ['required', 'string'],
             'role_ids' => ['array'],
         ]);
 
         $menu = Menu::create([
             'name' => $data['name'],
             'url' => $data['url'],
+            'icon_type' => $data['icon_type'],
         ]);
 
         if (!empty($data['role_ids'])) {

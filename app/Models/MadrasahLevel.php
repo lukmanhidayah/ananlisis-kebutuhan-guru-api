@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class MadrasahLevel extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'url',
-        'icon_type',
+        'description',
+        'created_by',
+        'updated_by',
     ];
-
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
 }
