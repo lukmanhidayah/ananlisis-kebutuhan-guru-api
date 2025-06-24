@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class CalculationMethod extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'url',
-        'icon_type',
+        'divisor_value',
+        'created_by',
+        'updated_by',
     ];
-
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\Api\MenuApiController;
 use App\Http\Controllers\Api\RoleApiController;
 use App\Http\Controllers\Api\InsightApiController;
+use App\Http\Controllers\Api\MadrasahApiController;
 
 Route::prefix('v1')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
@@ -25,8 +26,15 @@ Route::prefix('v1')->group(function () {
         Route::get('/menus/{id}', [MenuApiController::class, 'show']);
 
         Route::get('/roles', [RoleApiController::class, 'index']);
+        Route::post('/roles', [RoleApiController::class, 'store']);
         Route::get('/roles/{id}', [RoleApiController::class, 'show']);
 
         Route::get('/insights', [InsightApiController::class, 'index']);
+
+        Route::get('/madrasahs', [MadrasahApiController::class, 'index']);
+        Route::post('/madrasahs', [MadrasahApiController::class, 'store']);
+        Route::get('/madrasahs/{id}', [MadrasahApiController::class, 'show']);
+        Route::put('/madrasahs/{id}', [MadrasahApiController::class, 'update']);
+        Route::delete('/madrasahs/{id}', [MadrasahApiController::class, 'destroy']);
     });
 });

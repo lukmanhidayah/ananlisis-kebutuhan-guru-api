@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class Subject extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'url',
-        'icon_type',
+        'created_by',
+        'updated_by',
     ];
-
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
 }

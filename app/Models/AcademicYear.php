@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class AcademicYear extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'url',
-        'icon_type',
+        'code',
+        'start_date',
+        'end_date',
+        'created_by',
+        'updated_by',
     ];
-
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
 }

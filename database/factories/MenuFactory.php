@@ -15,6 +15,7 @@ class MenuFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'url' => '/' . $this->faker->slug(),
+            'icon_type' => 'default',
         ];
     }
 }

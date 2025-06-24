@@ -24,4 +24,19 @@ class RoleApiTest extends TestCase
                 'result' => ['currentPage', 'data'],
             ]);
     }
+
+    public function test_create_role(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)
+            ->postJson('/api/v1/roles', [
+                'name' => 'New Role',
+            ]);
+
+        $response->assertStatus(201)
+            ->assertJsonPath('result.name', 'New Role');
+
+        $this->assertDatabaseHas('roles', ['name' => 'New Role']);
+    }
 }

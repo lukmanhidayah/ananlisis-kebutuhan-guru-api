@@ -34,6 +34,19 @@ class RoleApiController extends Controller
         return $this->response($array, 'Retrieved successfully');
     }
 
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'unique:roles,name'],
+        ]);
+
+        $role = Role::create(['name' => $data['name']]);
+
+        $array = $this->camelKeys($role->toArray());
+
+        return $this->response($array, 'Created', 201);
+    }
+
     private function camelKeys(array $data): array
     {
         $result = [];
