@@ -13,7 +13,7 @@ class UserApiController extends Controller
     {
         $email = $request->query('email');
         $page = $request->query('page', 1);
-        $perPage = $request->query('pageSize', 10);
+        $pageSize = $request->query('pageSize', 10);
 
         $query = User::query()
             ->with('role')
@@ -24,7 +24,7 @@ class UserApiController extends Controller
         }
 
         $users = $query->orderBy('id', 'asc')
-            ->paginate((int) $perPage, ['*'], 'page', (int) $page);
+            ->paginate((int) $pageSize, ['*'], 'page', (int) $page);
 
         $array = $this->camelKeys($users->toArray());
         $customPagination = [

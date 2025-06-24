@@ -12,10 +12,10 @@ class MenuApiController extends Controller
     public function index(Request $request)
     {
         $page = $request->query('page', 1);
-        $perPage = $request->query('pageSize', 10);
+        $pageSize = $request->query('pageSize', 10);
         $menus = Menu::with('roles')
             ->orderBy('id', 'asc')
-            ->paginate((int) $perPage, ['*'], 'page', (int) $page);
+            ->paginate((int) $pageSize, ['*'], 'page', (int) $page);
         // Customize pagination result
         $array = $this->camelKeys($menus->toArray());
         $customPagination = [

@@ -12,9 +12,9 @@ class RoleApiController extends Controller
     public function index(Request $request)
     {
         $page = $request->query('page', 1);
-        $perPage = $request->query('pageSize', 10);
+        $pageSize = $request->query('pageSize', 10);
         $roles = Role::orderBy('id', 'asc')
-            ->paginate((int) $perPage, ['*'], 'page', (int) $page);
+            ->paginate((int) $pageSize, ['*'], 'page', (int) $page);
             
         $array = $this->camelKeys($roles->toArray());
         $customPagination = [
