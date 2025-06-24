@@ -12,7 +12,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('menu_id')->constrained('menus');
             $table->foreignId('role_id')->constrained('roles');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(now());
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

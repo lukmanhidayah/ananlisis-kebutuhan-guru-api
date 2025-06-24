@@ -10,10 +10,10 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('role_id')->constrained('roles');
             $table->string('name');
             $table->string('url');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(now());
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

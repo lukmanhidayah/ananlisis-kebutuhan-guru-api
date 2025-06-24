@@ -11,16 +11,26 @@ class MenuApiController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = $request->query('per_page', 15);
-        $menus = Menu::with('roles')->paginate((int) $perPage);
+        $page = $request->query('page', 1);
+        $perPage = $request->query('pageSize', 10);
+        $menus = Menu::with('roles')
+            ->orderBy('id', 'asc')
+            ->paginate((int) $perPage, ['*'], 'page', (int) $page);
+        // Customize pagination result
         $array = $this->camelKeys($menus->toArray());
+        $customPagination = [
+            'currentPage' => $menus->currentPage(),
+            'pageSize' => $menus->perPage(),
+            'total' => $menus->total(),
+            'data' => $array['data'] ?? [],
+        ];
 
-        return $this->response($array, 'OK');
+        return $this->response($customPagination, 'OK');
     }
 
     public function show(int $id)
     {
-        $menu = Menu::with('roles')->findOrFail($id);
+        $menu = Menu::findOrFail($id);
         $array = $this->camelKeys($menu->toArray());
 
         return $this->response($array, 'OK');

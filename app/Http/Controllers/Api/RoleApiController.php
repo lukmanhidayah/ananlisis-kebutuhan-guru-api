@@ -11,11 +11,19 @@ class RoleApiController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = $request->query('per_page', 15);
-        $roles = Role::paginate((int) $perPage);
+        $page = $request->query('page', 1);
+        $perPage = $request->query('pageSize', 10);
+        $roles = Role::orderBy('id', 'asc')
+            ->paginate((int) $perPage, ['*'], 'page', (int) $page);
+            
         $array = $this->camelKeys($roles->toArray());
-
-        return $this->response($array, 'OK');
+        $customPagination = [
+            'currentPage' => $roles->currentPage(),
+            'pageSize' => $roles->perPage(),
+            'total' => $roles->total(),
+            'data' => $array['data'] ?? [],
+        ];
+        return $this->response($customPagination, 'OK');
     }
 
     public function show(int $id)

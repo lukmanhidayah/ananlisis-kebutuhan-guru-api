@@ -12,17 +12,29 @@ class UserApiController extends Controller
     public function index(Request $request)
     {
         $email = $request->query('email');
-        $perPage = $request->query('per_page', 15);
+        $page = $request->query('page', 1);
+        $perPage = $request->query('pageSize', 10);
 
-        $query = User::with('role');
+        $query = User::query()
+            ->with('role')
+            ->select('id', 'name', 'email', 'status', 'created_at', 'updated_at', 'role_id');
+
         if ($email) {
             $query->where('email', 'like', "%$email%");
         }
 
-        $users = $query->paginate((int) $perPage);
-        $array = $this->camelKeys($users->toArray());
+        $users = $query->orderBy('id', 'asc')
+            ->paginate((int) $perPage, ['*'], 'page', (int) $page);
 
-        return $this->response($array, 'OK');
+        $array = $this->camelKeys($users->toArray());
+        $customPagination = [
+            'currentPage' => $users->currentPage(),
+            'pageSize' => $users->perPage(),
+            'total' => $users->total(),
+            'data' => $array['data'] ?? [],
+        ];
+
+        return $this->response($customPagination, 'OK');
     }
 
     public function profile(Request $request)

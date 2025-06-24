@@ -13,9 +13,11 @@ Route::prefix('v1')->group(function () {
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
+
+        Route::get('/profile', [UserApiController::class, 'profile']);
+        
         Route::get('/users', [UserApiController::class, 'index']);
         Route::post('/users', [AuthController::class, 'register']);
-        Route::get('/profile', [UserApiController::class, 'profile']);
         Route::get('/users/{id}', [UserApiController::class, 'show']);
 
         Route::get('/menus', [MenuApiController::class, 'index']);
