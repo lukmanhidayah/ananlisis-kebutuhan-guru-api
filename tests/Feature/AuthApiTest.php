@@ -25,7 +25,7 @@ class AuthApiTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure([
                 'meta' => ['code', 'message'],
-                'result' => ['token'],
+                'result' => ['token', 'role'],
             ]);
 
         $token = $response->json('result.token');

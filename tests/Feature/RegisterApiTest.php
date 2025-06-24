@@ -11,7 +11,7 @@ class RegisterApiTest extends TestCase
 
     public function test_user_can_register_and_receive_token(): void
     {
-        $response = $this->postJson('/api/v1/register', [
+        $response = $this->postJson('/api/v1/users', [
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'password' => 'secret',
