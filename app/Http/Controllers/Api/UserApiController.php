@@ -25,6 +25,16 @@ class UserApiController extends Controller
         return $this->response($array, 'OK');
     }
 
+    public function profile(Request $request)
+    {
+        $user = $request->user();
+        $data = $user->toArray();
+        $data['role'] = $user->role->name ?? null;
+        $data = $this->camelKeys($data);
+
+        return $this->response($data, 'OK');
+    }
+
     private function camelKeys(array $data): array
     {
         $result = [];
