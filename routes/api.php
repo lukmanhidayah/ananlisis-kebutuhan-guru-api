@@ -6,10 +6,12 @@ use App\Http\Controllers\Api\ExampleApiController;
 use App\Http\Controllers\Api\UserApiController;
 
 Route::prefix('v1')->group(function () {
-    Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
-    Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
     Route::get('/example', [ExampleApiController::class, 'index']);
-    Route::get('/users', [UserApiController::class, 'index']);
-});
 
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/logout', [AuthController::class, 'logout']);
+        Route::get('/users', [UserApiController::class, 'index']);
+        Route::post('/register', [AuthController::class, 'register']);
+    });
+});
