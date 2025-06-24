@@ -10,4 +10,9 @@ class Role extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function menus()
+    {
+        return $this->belongsToMany(Menu::class);
+    }
 }

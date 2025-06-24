@@ -10,15 +10,11 @@ class MenuSeeder extends Seeder
 {
     public function run(): void
     {
+        $home = Menu::firstOrCreate(['name' => 'Home'], ['url' => '/home']);
+        $profile = Menu::firstOrCreate(['name' => 'Profile'], ['url' => '/profile']);
+
         foreach (Role::all() as $role) {
-            Menu::firstOrCreate(
-                ['role_id' => $role->id, 'name' => 'Home'],
-                ['url' => '/home']
-            );
-            Menu::firstOrCreate(
-                ['role_id' => $role->id, 'name' => 'Profile'],
-                ['url' => '/profile']
-            );
+            $role->menus()->syncWithoutDetaching([$home->id, $profile->id]);
         }
     }
 }
