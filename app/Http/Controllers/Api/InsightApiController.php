@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Str;
 
 class InsightApiController extends Controller
 {
@@ -19,16 +18,4 @@ class InsightApiController extends Controller
         return $this->response($this->camelKeys($data), 'Success');
     }
 
-    private function camelKeys(array $data): array
-    {
-        $result = [];
-        foreach ($data as $key => $value) {
-            $key = Str::camel($key);
-            if (is_array($value)) {
-                $value = $this->camelKeys($value);
-            }
-            $result[$key] = $value;
-        }
-        return $result;
-    }
 }

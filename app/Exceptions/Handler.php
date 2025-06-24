@@ -5,6 +5,9 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
@@ -77,5 +80,30 @@ class Handler extends ExceptionHandler
 
 
         return parent::render($request, $e);
+    }
+
+    protected function invalidJson($request, ValidationException $exception): JsonResponse
+    {
+        return response()->json([
+            'meta' => [
+                'code' => $exception->status,
+                'message' => 'Validation Error',
+            ],
+            'errors' => $this->camelKeys($exception->errors()),
+        ], $exception->status);
+    }
+
+    private function camelKeys(array $data): array
+    {
+        $result = [];
+        foreach ($data as $key => $value) {
+            $key = Str::camel($key);
+            if (is_array($value)) {
+                $value = $this->camelKeys($value);
+            }
+            $result[$key] = $value;
+        }
+
+        return $result;
     }
 }

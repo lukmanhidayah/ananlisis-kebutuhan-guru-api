@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class UserApiController extends Controller
 {
@@ -55,16 +54,4 @@ class UserApiController extends Controller
         return $this->response($data, 'Retrieved successfully');
     }
 
-    private function camelKeys(array $data): array
-    {
-        $result = [];
-        foreach ($data as $key => $value) {
-            $key = Str::camel($key);
-            if (is_array($value)) {
-                $value = $this->camelKeys($value);
-            }
-            $result[$key] = $value;
-        }
-        return $result;
-    }
 }

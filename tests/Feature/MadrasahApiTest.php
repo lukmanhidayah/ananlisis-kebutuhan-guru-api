@@ -22,10 +22,10 @@ class MadrasahApiTest extends TestCase
                 'nsm' => '1234',
                 'name' => 'Madrasah Test',
                 'address' => 'Address',
-                'madrasah_level_id' => $level->id,
-                'regency_id' => 1,
-                'district_id' => 1,
-                'village_id' => 1,
+                'madrasahLevelId' => $level->id,
+                'regencyId' => 1,
+                'districtId' => 1,
+                'villageId' => 1,
             ]);
 
         $response->assertStatus(201)
