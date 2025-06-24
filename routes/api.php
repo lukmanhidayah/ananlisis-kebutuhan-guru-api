@@ -8,6 +8,10 @@ use App\Http\Controllers\Api\MenuApiController;
 use App\Http\Controllers\Api\RoleApiController;
 use App\Http\Controllers\Api\InsightApiController;
 use App\Http\Controllers\Api\MadrasahApiController;
+use App\Http\Controllers\Api\MadrasahLevelApiController;
+use App\Http\Controllers\Api\ClassLevelApiController;
+use App\Http\Controllers\Api\SubjectApiController;
+use App\Http\Controllers\Api\AcademicYearApiController;
 
 Route::prefix('v1')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
@@ -36,5 +40,29 @@ Route::prefix('v1')->group(function () {
         Route::get('/madrasahs/{id}', [MadrasahApiController::class, 'show']);
         Route::put('/madrasahs/{id}', [MadrasahApiController::class, 'update']);
         Route::delete('/madrasahs/{id}', [MadrasahApiController::class, 'destroy']);
+
+        Route::get('/madrasah-levels', [MadrasahLevelApiController::class, 'index']);
+        Route::post('/madrasah-levels', [MadrasahLevelApiController::class, 'store']);
+        Route::get('/madrasah-levels/{id}', [MadrasahLevelApiController::class, 'show']);
+        Route::put('/madrasah-levels/{id}', [MadrasahLevelApiController::class, 'update']);
+        Route::delete('/madrasah-levels/{id}', [MadrasahLevelApiController::class, 'destroy']);
+
+        Route::get('/class-levels', [ClassLevelApiController::class, 'index']);
+        Route::post('/class-levels', [ClassLevelApiController::class, 'store']);
+        Route::get('/class-levels/{id}', [ClassLevelApiController::class, 'show']);
+        Route::put('/class-levels/{id}', [ClassLevelApiController::class, 'update']);
+        Route::delete('/class-levels/{id}', [ClassLevelApiController::class, 'destroy']);
+
+        Route::get('/subjects', [SubjectApiController::class, 'index']);
+        Route::post('/subjects', [SubjectApiController::class, 'store']);
+        Route::get('/subjects/{id}', [SubjectApiController::class, 'show']);
+        Route::put('/subjects/{id}', [SubjectApiController::class, 'update']);
+        Route::delete('/subjects/{id}', [SubjectApiController::class, 'destroy']);
+
+        Route::get('/academic-years', [AcademicYearApiController::class, 'index']);
+        Route::post('/academic-years', [AcademicYearApiController::class, 'store']);
+        Route::get('/academic-years/{id}', [AcademicYearApiController::class, 'show']);
+        Route::put('/academic-years/{id}', [AcademicYearApiController::class, 'update']);
+        Route::delete('/academic-years/{id}', [AcademicYearApiController::class, 'destroy']);
     });
 });
