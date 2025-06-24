@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Str;
 
 abstract class Controller
 {
@@ -21,5 +22,33 @@ abstract class Controller
             ],
             'result' => $result,
         ], $code);
+    }
+
+    protected function camelKeys(array $data): array
+    {
+        $result = [];
+        foreach ($data as $key => $value) {
+            $key = Str::camel($key);
+            if (is_array($value)) {
+                $value = $this->camelKeys($value);
+            }
+            $result[$key] = $value;
+        }
+
+        return $result;
+    }
+
+    protected function snakeKeys(array $data): array
+    {
+        $result = [];
+        foreach ($data as $key => $value) {
+            $key = Str::snake($key);
+            if (is_array($value)) {
+                $value = $this->snakeKeys($value);
+            }
+            $result[$key] = $value;
+        }
+
+        return $result;
     }
 }

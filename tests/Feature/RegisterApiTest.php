@@ -15,7 +15,7 @@ class RegisterApiTest extends TestCase
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'password' => 'secret',
-            'password_confirmation' => 'secret',
+            'passwordConfirmation' => 'secret',
         ]);
 
         $response->assertStatus(201)

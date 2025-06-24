@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class MenuApiController extends Controller
 {
@@ -61,16 +60,4 @@ class MenuApiController extends Controller
         return $this->response($array, 'Created', 201);
     }
 
-    private function camelKeys(array $data): array
-    {
-        $result = [];
-        foreach ($data as $key => $value) {
-            $key = Str::camel($key);
-            if (is_array($value)) {
-                $value = $this->camelKeys($value);
-            }
-            $result[$key] = $value;
-        }
-        return $result;
-    }
 }
