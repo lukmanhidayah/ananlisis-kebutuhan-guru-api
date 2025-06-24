@@ -42,9 +42,13 @@ class AuthController extends Controller
             return $this->response(null, 'Unauthorized', 401);
         }
 
-        $token = $request->user()->createToken('api-token')->plainTextToken;
+        $user = $request->user();
+        $token = $user->createToken('api-token')->plainTextToken;
 
-        return $this->response(['token' => $token], 'Login successful');
+        return $this->response([
+            'token' => $token,
+            'role'  => optional($user->role)->name,
+        ], 'Login successful');
     }
 
     public function logout(Request $request)
