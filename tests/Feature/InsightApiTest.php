@@ -3,21 +3,16 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use App\Models\Menu;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class MenuApiTest extends TestCase
+class InsightApiTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_lists_menus_with_pagination(): void
+    public function test_insight_endpoint_returns_data(): void
     {
         $user = User::factory()->create(['password' => bcrypt('secret')]);
-        $menus = Menu::factory()->count(3)->create();
-        foreach ($menus as $menu) {
-            $menu->roles()->attach($user->role_id);
-        }
 
         $login = $this->postJson('/api/v1/login', [
             'email' => $user->email,
@@ -28,14 +23,13 @@ class MenuApiTest extends TestCase
 
         $response = $this->withHeaders([
             'Authorization' => 'Bearer ' . $token,
-        ])->getJson('/api/v1/menus');
+        ])->getJson('/api/v1/insights');
 
         $response->assertStatus(200)
             ->assertJsonStructure([
                 'meta' => ['code', 'message'],
                 'result' => [
-                    'currentPage',
-                    'data',
+                    ['title', 'value'],
                 ],
             ]);
     }

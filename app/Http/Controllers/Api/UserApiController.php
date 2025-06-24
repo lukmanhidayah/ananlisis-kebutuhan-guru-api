@@ -35,6 +35,14 @@ class UserApiController extends Controller
         return $this->response($data, 'OK');
     }
 
+    public function show(int $id)
+    {
+        $user = User::with('role')->findOrFail($id);
+        $data = $this->camelKeys($user->toArray());
+
+        return $this->response($data, 'OK');
+    }
+
     private function camelKeys(array $data): array
     {
         $result = [];

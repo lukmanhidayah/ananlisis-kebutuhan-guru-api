@@ -13,7 +13,6 @@ class MenuFactory extends Factory
     public function definition(): array
     {
         return [
-            'role_id' => Role::factory(),
             'name' => $this->faker->word(),
             'url' => '/' . $this->faker->slug(),
         ];

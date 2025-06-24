@@ -10,13 +10,12 @@ class Menu extends Model
     use HasFactory;
 
     protected $fillable = [
-        'role_id',
         'name',
         'url',
     ];
 
-    public function role()
+    public function roles()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsToMany(Role::class);
     }
 }
