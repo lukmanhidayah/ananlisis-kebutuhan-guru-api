@@ -16,7 +16,7 @@ class NotFoundApiTest extends TestCase
                     'code' => 404,
                     'message' => 'Not Found',
                 ],
-                'result' => null,
+                'data' => null,
             ]);
     }
 }

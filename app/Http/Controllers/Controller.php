@@ -20,7 +20,7 @@ abstract class Controller
                 'code'    => $code,
                 'message' => $message,
             ],
-            'result' => $result,
+            'data' => $result,
         ], $code);
     }
 

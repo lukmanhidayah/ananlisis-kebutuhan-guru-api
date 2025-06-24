@@ -14,7 +14,7 @@ class TeacherNeedCalculation extends Model
         'calculation_date',
         'calculation_method_id',
         'teacher_existing_count',
-        'result',
+        'data',
         'notes',
         'created_by',
         'updated_by',

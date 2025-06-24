@@ -30,7 +30,7 @@ class UserApiController extends Controller
             'currentPage' => $users->currentPage(),
             'pageSize' => $users->perPage(),
             'total' => $users->total(),
-            'data' => $array['data'] ?? [],
+            'result' => $array['data'] ?? [],
         ];
 
         return $this->response($customPagination, 'Data berhasil diambil');

@@ -16,7 +16,7 @@ class UnauthorizedApiTest extends TestCase
                     'code' => 401,
                     'message' => 'Unauthorized',
                 ],
-                'result' => null,
+                'data' => null,
             ]);
     }
 }

@@ -21,7 +21,7 @@ class RoleApiController extends Controller
             'currentPage' => $roles->currentPage(),
             'pageSize' => $roles->perPage(),
             'total' => $roles->total(),
-            'data' => $array['data'] ?? [],
+            'result' => $array['data'] ?? [],
         ];
         return $this->response($customPagination, 'Data berhasil diambil');
     }

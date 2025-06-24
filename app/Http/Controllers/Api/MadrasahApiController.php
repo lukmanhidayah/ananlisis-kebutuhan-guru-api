@@ -20,7 +20,7 @@ class MadrasahApiController extends Controller
             'currentPage' => $madrasahs->currentPage(),
             'pageSize' => $madrasahs->perPage(),
             'total' => $madrasahs->total(),
-            'data' => $array['data'] ?? [],
+            'result' => $array['data'] ?? [],
         ];
 
         return $this->response($customPagination, 'Retrieved successfully');

@@ -13,7 +13,7 @@ class ExampleApiTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure([
                 'meta' => ['code', 'message'],
-                'result' => ['hello'],
+                'data' => ['hello'],
             ]);
     }
 }

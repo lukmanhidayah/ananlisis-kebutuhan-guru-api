@@ -25,7 +25,7 @@ class ClassLevelApiController extends Controller
             'currentPage' => $levels->currentPage(),
             'pageSize' => $levels->perPage(),
             'total' => $levels->total(),
-            'data' => $array['data'] ?? [],
+            'result' => $array['data'] ?? [],
         ];
 
         return $this->response($customPagination, 'Data berhasil diambil');

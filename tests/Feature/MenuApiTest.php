@@ -33,7 +33,7 @@ class MenuApiTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure([
                 'meta' => ['code', 'message'],
-                'result' => [
+                'data' => [
                     'currentPage',
                     'data',
                 ],

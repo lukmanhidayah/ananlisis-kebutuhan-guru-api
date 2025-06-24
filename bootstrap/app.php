@@ -31,7 +31,7 @@ return Application::configure(basePath: dirname(__DIR__))
                             'code' => 404,
                             'message' => 'Not Found',
                         ],
-                        'result' => null,
+                        'data' => null,
                     ], 404);
                 }
             }
@@ -43,7 +43,7 @@ return Application::configure(basePath: dirname(__DIR__))
                             'code' => 401,
                             'message' => 'Unauthorized',
                         ],
-                        'result' => null,
+                        'data' => null,
                     ], 401);
                 }
             }
@@ -59,7 +59,7 @@ return Application::configure(basePath: dirname(__DIR__))
                         'code' => $e->status,
                         'message' => $errors[0] ?? 'Validation Error',
                     ],
-                    'result' => null,
+                    'data' => null,
                 ], $e->status);
             }
         });

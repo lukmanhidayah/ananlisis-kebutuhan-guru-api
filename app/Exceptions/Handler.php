@@ -61,7 +61,7 @@ class Handler extends ExceptionHandler
                         'code' => 404,
                         'message' => 'Not Found',
                     ],
-                    'result' => null,
+                    'data' => null,
                 ], 404);
             }
         }
@@ -73,7 +73,7 @@ class Handler extends ExceptionHandler
                         'code' => 401,
                         'message' => 'Unauthorized',
                     ],
-                    'result' => null,
+                    'data' => null,
                 ], 401);
             }
         }

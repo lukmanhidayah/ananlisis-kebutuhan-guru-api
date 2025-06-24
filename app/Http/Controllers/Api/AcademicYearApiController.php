@@ -20,7 +20,7 @@ class AcademicYearApiController extends Controller
             'currentPage' => $years->currentPage(),
             'pageSize' => $years->perPage(),
             'total' => $years->total(),
-            'data' => $array['data'] ?? [],
+            'result' => $array['data'] ?? [],
         ];
 
         return $this->response($customPagination, 'Data berhasil diambil');

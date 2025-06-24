@@ -19,7 +19,7 @@ class UserApiTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure([
                 'meta' => ['code', 'message'],
-                'result' => [
+                'data' => [
                     'currentPage',
                     'data' => [
                         ['id', 'name', 'email', 'roleId']

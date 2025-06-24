@@ -21,7 +21,7 @@ class RegisterApiTest extends TestCase
         $response->assertStatus(201)
             ->assertJsonStructure([
                 'meta' => ['code', 'message'],
-                'result' => ['token'],
+                'data' => ['token'],
             ]);
 
         $this->assertDatabaseHas('users', [

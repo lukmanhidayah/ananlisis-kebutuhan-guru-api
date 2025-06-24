@@ -21,7 +21,7 @@ class MenuApiController extends Controller
             'currentPage' => $menus->currentPage(),
             'pageSize' => $menus->perPage(),
             'total' => $menus->total(),
-            'data' => $array['data'] ?? [],
+            'result' => $array['data'] ?? [],
         ];
 
         return $this->response($customPagination, 'Data berhasil diambil');

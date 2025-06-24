@@ -20,7 +20,7 @@ class SubjectApiController extends Controller
             'currentPage' => $subjects->currentPage(),
             'pageSize' => $subjects->perPage(),
             'total' => $subjects->total(),
-            'data' => $array['data'] ?? [],
+            'result' => $array['data'] ?? [],
         ];
 
         return $this->response($customPagination, 'Data berhasil diambil');
