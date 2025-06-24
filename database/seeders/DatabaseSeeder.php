@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             MenuSeeder::class,
+            MadrasahLevelSeeder::class,
+            AcademicYearSeeder::class,
+            SubjectSeeder::class,
+            ClassLevelSeeder::class,
         ]);
     }
 }
