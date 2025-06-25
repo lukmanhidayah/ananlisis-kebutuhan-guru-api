@@ -12,8 +12,40 @@ class MadrasahApiController extends Controller
     {
         $page = $request->query('page', 1);
         $pageSize = $request->query('pageSize', 10);
-        $madrasahs = Madrasah::orderBy('id', 'asc')
-            ->paginate((int) $pageSize, ['*'], 'page', (int) $page);
+        $levelId = $request->query('madrasahLevelId');
+        $regencyId = $request->query('regencyId');
+        $subjectShortageId = $request->query('subjectShortageId');
+        $subjectExcessId = $request->query('subjectExcessId');
+
+        $query = Madrasah::query()->orderBy('id', 'asc');
+
+        if ($levelId) {
+            $query->where('madrasah_level_id', $levelId);
+        }
+
+        if ($regencyId) {
+            $query->where('regency_id', $regencyId);
+        }
+
+        if ($subjectShortageId) {
+            $query->whereHas('teacherNeeds', function ($q) use ($subjectShortageId) {
+                $q->where('subject_id', $subjectShortageId)
+                    ->whereHas('calculations', function ($qc) {
+                        $qc->where('result', '>', 0);
+                    });
+            });
+        }
+
+        if ($subjectExcessId) {
+            $query->whereHas('teacherNeeds', function ($q) use ($subjectExcessId) {
+                $q->where('subject_id', $subjectExcessId)
+                    ->whereHas('calculations', function ($qc) {
+                        $qc->where('result', '<', 0);
+                    });
+            });
+        }
+
+        $madrasahs = $query->paginate((int) $pageSize, ['*'], 'page', (int) $page);
 
         $array = $this->camelKeys($madrasahs->toArray());
         $customPagination = [

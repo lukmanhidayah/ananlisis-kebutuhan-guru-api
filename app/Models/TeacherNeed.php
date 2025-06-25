@@ -17,4 +17,19 @@ class TeacherNeed extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function madrasah()
+    {
+        return $this->belongsTo(Madrasah::class);
+    }
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
+    public function calculations()
+    {
+        return $this->hasMany(TeacherNeedCalculation::class);
+    }
 }
