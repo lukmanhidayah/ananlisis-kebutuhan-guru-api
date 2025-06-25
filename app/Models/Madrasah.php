@@ -23,4 +23,9 @@ class Madrasah extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function teacherNeeds()
+    {
+        return $this->hasMany(TeacherNeed::class);
+    }
 }

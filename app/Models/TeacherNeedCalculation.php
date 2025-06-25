@@ -19,4 +19,9 @@ class TeacherNeedCalculation extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function teacherNeed()
+    {
+        return $this->belongsTo(TeacherNeed::class);
+    }
 }
