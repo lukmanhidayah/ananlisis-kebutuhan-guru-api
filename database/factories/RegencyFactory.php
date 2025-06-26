@@ -12,6 +12,8 @@ class RegencyFactory extends Factory
     {
         return [
             'name' => $this->faker->city(),
+            'latitude' => $this->faker->latitude(),
+            'longitude' => $this->faker->longitude(),
         ];
     }
 }
