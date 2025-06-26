@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             MenuSeeder::class,
             RegencySeeder::class,
+            DistrictSeeder::class,
+            VillageSeeder::class,
             MadrasahLevelSeeder::class,
             AcademicYearSeeder::class,
             SubjectSeeder::class,
