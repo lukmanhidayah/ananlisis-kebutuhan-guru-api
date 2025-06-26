@@ -12,6 +12,8 @@ class District extends Model
     protected $fillable = [
         'regency_id',
         'name',
+        'latitude',
+        'longitude',
         'created_by',
         'updated_by',
     ];

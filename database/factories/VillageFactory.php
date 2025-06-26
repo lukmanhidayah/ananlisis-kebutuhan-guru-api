@@ -13,6 +13,8 @@ class VillageFactory extends Factory
         return [
             'district_id' => \App\Models\District::factory(),
             'name' => $this->faker->streetName(),
+            'latitude' => $this->faker->latitude(),
+            'longitude' => $this->faker->longitude(),
         ];
     }
 }

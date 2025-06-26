@@ -12,6 +12,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('district_id')->constrained('districts');
             $table->string('name', 100);
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
             $table->timestamp('created_at')->default(now());
             $table->string('created_by', 100)->nullable();
             $table->timestamp('updated_at')->nullable();

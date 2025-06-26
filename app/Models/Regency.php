@@ -11,6 +11,8 @@ class Regency extends Model
 
     protected $fillable = [
         'name',
+        'latitude',
+        'longitude',
         'created_by',
         'updated_by',
     ];

@@ -13,6 +13,8 @@ class DistrictFactory extends Factory
         return [
             'regency_id' => \App\Models\Regency::factory(),
             'name' => $this->faker->citySuffix(),
+            'latitude' => $this->faker->latitude(),
+            'longitude' => $this->faker->longitude(),
         ];
     }
 }
