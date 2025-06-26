@@ -11,6 +11,9 @@ use App\Http\Controllers\Api\MadrasahLevelApiController;
 use App\Http\Controllers\Api\ClassLevelApiController;
 use App\Http\Controllers\Api\SubjectApiController;
 use App\Http\Controllers\Api\AcademicYearApiController;
+use App\Http\Controllers\Api\RegencyApiController;
+use App\Http\Controllers\Api\DistrictApiController;
+use App\Http\Controllers\Api\VillageApiController;
 
 Route::prefix('v1')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
@@ -57,6 +60,10 @@ Route::prefix('v1')->group(function () {
         Route::get('/subjects/{id}', [SubjectApiController::class, 'show']);
         Route::put('/subjects/{id}', [SubjectApiController::class, 'update']);
         Route::delete('/subjects/{id}', [SubjectApiController::class, 'destroy']);
+
+        Route::get('/regencies', [RegencyApiController::class, 'index']);
+        Route::get('/districts', [DistrictApiController::class, 'index']);
+        Route::get('/villages', [VillageApiController::class, 'index']);
 
         Route::get('/academic-years', [AcademicYearApiController::class, 'index']);
         Route::post('/academic-years', [AcademicYearApiController::class, 'store']);
