@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\ExampleApiController;
 use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\Api\MenuApiController;
 use App\Http\Controllers\Api\RoleApiController;
