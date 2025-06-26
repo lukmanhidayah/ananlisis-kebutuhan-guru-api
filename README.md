@@ -39,6 +39,9 @@ All routes are prefixed with `/api/v1` and protected using Sanctum (except `/log
 | GET    | `/subjects/{id}` | Show subject |
 | PUT    | `/subjects/{id}` | Update subject |
 | DELETE | `/subjects/{id}` | Delete subject |
+| GET    | `/regencies` | List regencies |
+| GET    | `/districts` | List districts (use `regencyId` query to filter) |
+| GET    | `/villages` | List villages (use `districtId` query to filter) |
 | GET    | `/academic-years` | List academic years |
 | POST   | `/academic-years` | Create academic year |
 | GET    | `/academic-years/{id}` | Show academic year |
