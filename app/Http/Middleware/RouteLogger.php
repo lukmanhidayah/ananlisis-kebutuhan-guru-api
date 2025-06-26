@@ -23,7 +23,6 @@ class RouteLogger
             'method'    => $request->method(),
             'uri'       => $request->path(),
             'status'    => $response->status(),
-            'user'      => optional($request->user())->id,
             'request'   => $request->all(),
             'response'  => $this->parseResponse($response),
         ]);
